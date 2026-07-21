@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In — My Smart School</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="auth-shell">
+    <div style="width:100%; max-width:420px;">
+      <a href="index.html" class="back-home">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to home
+      </a>
+
+      <div class="auth-card card-clay">
+        <div class="logo">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"></path><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"></path></svg>
+          My Smart School
+        </div>
+        <h1>Welcome back</h1>
+        <p class="subtitle">Sign in to reach your dashboard.</p>
+
+        <div id="formMessage" role="alert"></div>
+
+        <div class="auth-tabs">
+          <button type="button" class="auth-tab active" id="tabSignIn">Sign In</button>
+          <button type="button" class="auth-tab" id="tabSignUp">Sign Up</button>
+        </div>
+
+        <button type="button" class="btn btn-google btn-block" id="googleBtn">
+          <svg class="icon icon-sm" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.9 32.6 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l6-6C34.9 5.5 29.7 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21c0-1.4-.1-2.4-.4-3.5z"></path><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.9 18.9 13 24 13c3.1 0 5.8 1.1 8 3l6-6C34.9 6.5 29.7 3 24 3c-7.5 0-14 4.3-17.7 10.7z"></path><path fill="#4CAF50" d="M24 45c5.6 0 10.7-2.1 14.5-5.7l-6.7-5.5C29.6 35.5 26.9 36 24 36c-5.3 0-9.8-3.4-11.4-8.1l-6.6 5.1C9.8 40.6 16.4 45 24 45z"></path><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.2 4.3-4.1 5.8l6.7 5.5C41.4 36.2 45 30.6 45 24c0-1.4-.1-2.4-.4-3.5z"></path></svg>
+          Continue with Google
+        </button>
+
+        <div class="auth-divider">or</div>
+
+        <form class="auth-form active" id="signInForm" novalidate>
+          <div class="field">
+            <label for="signInEmail">Email</label>
+            <input class="input" type="email" id="signInEmail" name="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="signInPassword">Password</label>
+            <input class="input" type="password" id="signInPassword" name="password" required autocomplete="current-password" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="signInSubmit">Sign In</button>
+        </form>
+
+        <form class="auth-form" id="signUpForm" novalidate>
+          <div class="field">
+            <label for="signUpName">Name</label>
+            <input class="input" type="text" id="signUpName" name="name" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="signUpEmail">Email</label>
+            <input class="input" type="email" id="signUpEmail" name="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="signUpPassword">Password</label>
+            <input class="input" type="password" id="signUpPassword" name="password" required minlength="6" autocomplete="new-password" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="signUpSubmit">Create Account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

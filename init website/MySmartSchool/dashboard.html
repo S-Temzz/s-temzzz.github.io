@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — My Smart School</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <div class="dashboard-loading" id="dashboardLoading">
+    <div class="spinner" role="status" aria-label="Loading"></div>
+  </div>
+
+  <div class="dashboard-shell" id="dashboardShell" style="display:none;">
+    <aside class="sidebar" id="sidebar">
+      <a href="index.html" class="logo">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"></path><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"></path></svg>
+        My Smart School
+      </a>
+
+      <div class="sidebar-user">
+        <div class="sidebar-avatar" id="sidebarAvatar">S</div>
+        <div class="sidebar-user-info">
+          <div class="name" id="sidebarName">Student</div>
+          <div class="email" id="sidebarEmail"></div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a href="#studygoal" data-page="studygoal"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M2 9 12 4l10 5-10 5-10-5z"></path><path d="M6 11.5V17c0 1.5 3 3 6 3s6-1.5 6-3v-5.5"></path><line x1="22" y1="9" x2="22" y2="15"></line></svg> Study Goal</a>
+        <a href="#grades" data-page="grades"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="20" x2="5" y2="12"></line><line x1="12" y1="20" x2="12" y2="6"></line><line x1="19" y1="20" x2="19" y2="14"></line><line x1="3" y1="20" x2="21" y2="20"></line></svg> Grades</a>
+        <a href="#homework" data-page="homework"><svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="18" rx="2"></rect><path d="M9 3h6a1 1 0 0 1 1 1v2H8V4a1 1 0 0 1 1-1z"></path><line x1="8" y1="11" x2="16" y2="11"></line><line x1="8" y1="15" x2="16" y2="15"></line></svg> Homework</a>
+        <a href="#timetable" data-page="timetable"><svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="3"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> Timetable</a>
+        <a href="#countdown" data-page="countdown"><svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 16 14"></polyline></svg> Exam Countdowns</a>
+        <a href="#news" data-page="news"><svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="3" y="5" width="14" height="16" rx="2"></rect><line x1="7" y1="9" x2="13" y2="9"></line><line x1="7" y1="13" x2="13" y2="13"></line><line x1="7" y1="17" x2="10" y2="17"></line><path d="M17 8h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H8"></path></svg> News</a>
+        <a href="#clubs" data-page="clubs"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M8 4h8v4a4 4 0 0 1-8 0V4z"></path><path d="M6 4H4a2 2 0 0 0 0 4h2M18 4h2a2 2 0 0 1 0 4h-2"></path><path d="M9 15h6l1 5H8l1-5z"></path><line x1="12" y1="12" x2="12" y2="15"></line></svg> Clubs &amp; Sports</a>
+        <a href="#resources" data-page="resources"><svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><line x1="3" y1="12" x2="21" y2="12"></line><path d="M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9z"></path></svg> Resources</a>
+      </nav>
+
+      <button class="btn btn-secondary btn-block sidebar-signout" id="signOutBtn">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        Sign Out
+      </button>
+    </aside>
+
+    <main class="dashboard-main">
+      <div class="dashboard-topbar">
+        <button class="nav-toggle" id="sidebarToggle" aria-label="Toggle sidebar" style="display:block;">
+          <svg class="icon" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <div class="logo">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M2 4h6a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"></path><path d="M22 4h-6a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h7z"></path></svg>
+          My Smart School
+        </div>
+      </div>
+
+      <div class="section-title" style="text-align:left; margin-bottom:32px;">
+        <h2 id="welcomeHeading">Welcome back!</h2>
+        <p>Here's everything you need for today.</p>
+      </div>
+
+      <div class="stat-row" id="statRow"></div>
+
+      <div class="dash-pages" id="dashPages">
+      <section class="dash-section" id="studygoal">
+        <div class="dash-section-header">
+          <h2><svg class="icon" viewBox="0 0 24 24"><path d="M2 9 12 4l10 5-10 5-10-5z"></path><path d="M6 11.5V17c0 1.5 3 3 6 3s6-1.5 6-3v-5.5"></path><line x1="22" y1="9" x2="22" y2="15"></line></svg> Study Goal</h2>
+        </div>
+        <div class="card-clay study-goal-card">
+          <div class="study-goal-ring-wrap">
+            <div class="study-goal-ring" id="studyGoalRing">
+              <div class="study-goal-ring-inner">
+                <span class="study-goal-minutes" id="studyGoalMinutesDone">0</span>
+                <span class="study-goal-of">of <span id="studyGoalMinutesTarget">60</span> min</span>
+              </div>
+            </div>
+          </div>
+          <div class="study-goal-controls">
+            <div class="study-goal-target">
+              <span class="study-goal-target-label">Daily goal</span>
+              <div class="study-goal-stepper">
+                <button type="button" class="study-goal-step-btn" id="studyGoalDecBtn" aria-label="Decrease goal">&minus;</button>
+                <span class="study-goal-target-value" id="studyGoalTargetDisplay">60 min</span>
+                <button type="button" class="study-goal-step-btn" id="studyGoalIncBtn" aria-label="Increase goal">+</button>
+              </div>
+            </div>
+            <div class="study-goal-quicklog">
+              <span class="study-goal-target-label">Log study time</span>
+              <div class="study-goal-quicklog-buttons">
+                <button type="button" class="btn btn-secondary" data-log-minutes="5">+5 min</button>
+                <button type="button" class="btn btn-secondary" data-log-minutes="15">+15 min</button>
+                <button type="button" class="btn btn-secondary" data-log-minutes="30">+30 min</button>
+              </div>
+            </div>
+            <div class="study-goal-footer">
+              <p class="study-goal-message" id="studyGoalMessage"></p>
+              <button type="button" class="study-goal-reset" id="studyGoalResetBtn">Reset today</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dash-section" id="grades">
+        <div class="dash-section-header">
+          <h2><svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="20" x2="5" y2="12"></line><line x1="12" y1="20" x2="12" y2="6"></line><line x1="19" y1="20" x2="19" y2="14"></line><line x1="3" y1="20" x2="21" y2="20"></line></svg> Grade Tracker</h2>
+        </div>
+        <div class="card-clay">
+          <form id="gradeForm">
+            <div class="grade-form-grid">
+              <div class="field" style="margin-bottom:0;">
+                <label for="gradeSubject">Subject</label>
+                <input class="input" id="gradeSubject" placeholder="e.g. Mathematics" required />
+              </div>
+              <div class="field" style="margin-bottom:0;">
+                <label for="gradeCurrent">Current grade (%)</label>
+                <input class="input" type="number" id="gradeCurrent" min="0" max="100" placeholder="e.g. 68" required />
+              </div>
+              <div class="field" style="margin-bottom:0;">
+                <label for="gradeTarget">Desired grade (%)</label>
+                <input class="input" type="number" id="gradeTarget" min="0" max="100" placeholder="e.g. 85" required />
+              </div>
+              <button type="submit" class="btn btn-primary">Add Subject</button>
+            </div>
+          </form>
+        </div>
+        <div class="grade-list" id="gradeList"></div>
+      </section>
+
+      <section class="dash-section" id="homework">
+        <div class="dash-section-header">
+          <h2><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="18" rx="2"></rect><path d="M9 3h6a1 1 0 0 1 1 1v2H8V4a1 1 0 0 1 1-1z"></path><line x1="8" y1="11" x2="16" y2="11"></line><line x1="8" y1="15" x2="16" y2="15"></line></svg> Homework Planner</h2>
+        </div>
+        <div class="card-clay">
+          <form id="homeworkForm">
+            <div class="homework-form-grid">
+              <div class="field" style="margin-bottom:0;">
+                <label for="hwSubject">Subject</label>
+                <input class="input" id="hwSubject" placeholder="e.g. Mathematics" />
+              </div>
+              <div class="field" style="margin-bottom:0;">
+                <label for="hwTitle">Task</label>
+                <input class="input" id="hwTitle" placeholder="e.g. Complete worksheet 4" required />
+              </div>
+              <div class="field" style="margin-bottom:0;">
+                <label for="hwDue">Due date</label>
+                <input class="input" type="date" id="hwDue" />
+              </div>
+              <button type="submit" class="btn btn-primary">Add Homework</button>
+            </div>
+            <div class="field" style="margin-top:14px; margin-bottom:0;">
+              <label for="hwDetails">Details (optional)</label>
+              <textarea class="input" id="hwDetails" rows="2" placeholder="Any extra notes..."></textarea>
+            </div>
+          </form>
+          <div class="homework-list" id="homeworkList"></div>
+        </div>
+      </section>
+
+      <section class="dash-section" id="timetable">
+        <div class="dash-section-header">
+          <h2><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="3"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> Timetable</h2>
+          <div class="timetable-toolbar">
+            <button type="button" class="btn btn-secondary" id="addDayBtn">+ Day</button>
+            <button type="button" class="btn btn-secondary" id="addPeriodBtn">+ Period</button>
+          </div>
+        </div>
+        <div class="card-clay timetable-wrap">
+          <table class="timetable" id="timetableEl"></table>
+        </div>
+      </section>
+
+      <section class="dash-section" id="countdown">
+        <div class="dash-section-header">
+          <h2><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 16 14"></polyline></svg> Exam Countdowns</h2>
+        </div>
+        <div class="card-clay">
+          <form class="countdown-form" id="countdownForm">
+            <div class="field">
+              <label for="examLabel">Exam name</label>
+              <input class="input" id="examLabel" placeholder="e.g. Maths Final" />
+            </div>
+            <div class="field">
+              <label for="examDate">Date</label>
+              <input class="input" type="date" id="examDate" required />
+            </div>
+            <div class="field">
+              <label for="examTime">Time</label>
+              <input class="input" type="time" id="examTime" />
+            </div>
+            <button type="submit" class="btn btn-primary">Add Countdown</button>
+          </form>
+        </div>
+        <div class="countdown-list" id="countdownList"></div>
+      </section>
+
+      <section class="dash-section" id="news">
+        <div class="dash-section-header">
+          <h2><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="14" height="16" rx="2"></rect><line x1="7" y1="9" x2="13" y2="9"></line><line x1="7" y1="13" x2="13" y2="13"></line><line x1="7" y1="17" x2="10" y2="17"></line><path d="M17 8h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H8"></path></svg> News &amp; Notices</h2>
+        </div>
+        <div class="card-grid" id="newsList"></div>
+      </section>
+
+      <section class="dash-section" id="clubs">
+        <div class="dash-section-header">
+          <h2><svg class="icon" viewBox="0 0 24 24"><path d="M8 4h8v4a4 4 0 0 1-8 0V4z"></path><path d="M6 4H4a2 2 0 0 0 0 4h2M18 4h2a2 2 0 0 1 0 4h-2"></path><path d="M9 15h6l1 5H8l1-5z"></path><line x1="12" y1="12" x2="12" y2="15"></line></svg> Club &amp; Sports Updates</h2>
+        </div>
+        <div class="card-grid" id="clubsList"></div>
+      </section>
+
+      <section class="dash-section" id="resources">
+        <div class="dash-section-header">
+          <h2><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><line x1="3" y1="12" x2="21" y2="12"></line><path d="M12 3c2.5 2.7 4 6 4 9s-1.5 6.3-4 9c-2.5-2.7-4-6-4-9s1.5-6.3 4-9z"></path></svg> Helpful Resources</h2>
+        </div>
+        <div class="card-grid" id="resourcesList"></div>
+      </section>
+      </div>
+    </main>
+  </div>
+
+  <button class="chatbot-fab" id="chatbotFab" aria-label="Open chat helper">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-11.9 7.8L3 21l1.7-6.1A8.5 8.5 0 1 1 21 11.5z"></path></svg>
+  </button>
+
+  <div class="chatbot-panel" id="chatbotPanel">
+    <div class="chatbot-header">
+      <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-11.9 7.8L3 21l1.7-6.1A8.5 8.5 0 1 1 21 11.5z"></path></svg>
+      Smart School Helper
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages"></div>
+    <form class="chatbot-input-row" id="chatbotForm">
+      <label for="chatbotInput" class="visually-hidden">Type a message</label>
+      <input id="chatbotInput" placeholder="Ask a question..." autocomplete="off" />
+      <button type="submit" class="chatbot-send" aria-label="Send message">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </form>
+  </div>
+
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
